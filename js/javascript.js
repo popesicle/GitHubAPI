@@ -54,7 +54,7 @@ window.onload = function() {
 		// [repoObj1, repoObj2]
 		var listElement = $("#reposList")[0];
 		repoArr.forEach(function(repObj){
-			listElement.innerHTML += "<div class = repos>" + "<a href=" + repObj.url + " class = repoName>" + repObj.name + "</a>" + "<p class = starGazers>" + "<i class='fa fa-star'></i> " + repObj.stargazers_count + "<p class = fork>" + "<i class='fa fa-code-fork'></i> " + repObj.forks_count + "</p>" + "<p class = language>" + repObj.language + "</p>" + "<br>" + "<p class = createdOn>" + repObj.created_at + "</p>"
+			listElement.innerHTML += "<div class = repos>" + "<a href=" + repObj.html_url + " class = repoName>" + repObj.name + "</a>" + "<p class = starGazers>" + "<i class='fa fa-star'></i> " + repObj.stargazers_count + "<p class = fork>" + "<i class='fa fa-code-fork'></i> " + repObj.forks_count + "</p>" + "<p class = language>" + repObj.language + "</p>" + "<br>" + "<p class = createdOn>" + repObj.created_at + "</p>"
 		})		
 	}
 
