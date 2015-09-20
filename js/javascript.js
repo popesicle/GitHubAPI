@@ -1,9 +1,9 @@
 
 window.onload = function() {
 
-	var user = $("input"),
+	var user = $("input").val(),
 
- 	urlProfile = "https://api.github.com/users/popesicle";
+ 	urlProfile = "https://api.github.com/users/" + user;
 
 
 	// dataKey = access_token: apiKey;
