@@ -3,8 +3,6 @@ window.onload = function() {
 
 	var  urlProfile = "https://api.github.com/users/popesicle",
 
-	apiKey = "0075c64da674ddbb7913705dbf4abfc317eed25b",
-
 	newProfile = "https://api.github.com/users/",
 
 	newRepos = "https://api.github.com/";
@@ -15,16 +13,16 @@ window.onload = function() {
 
 	var gitProfile = {
 		url: urlProfile,
-		data: {
-				"access_token" : apiKey
-			}
+		// data: {
+		// 		"access_token" : apiKey
+		// 	}
 		}
 
 	var gitRepos = {
 		url: urlProfile + "/repos",
-		data: {
-				"access_token" : apiKey
-			}
+		// data: {
+		// 		"access_token" : apiKey
+		// 	}
 		}
 
 	var createProfile = function(profileData) {
