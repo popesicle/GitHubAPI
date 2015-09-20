@@ -455,10 +455,10 @@ input {
 
   float: right;
   padding-right: 3%;
-  margin: 0;
   font-size: medium;
   font-weight: bold;
   color: #9C9A9A;
+  margin: 0;
 }
 
 .language {
@@ -481,7 +481,9 @@ input {
 
   width: 200px;
   display: inline-block;
+  text-decoration: none;
   margin: 0;
+  color: black;
 
 }
 
@@ -500,19 +502,6 @@ input {
   border-top: 2px solid #9C9A9A;
   padding-top: 10px;
   font-size: large;
-  text-align: center;
-}
-
-#followed > span {
-
-  color: #4078c0;
-  font-size: 50px;
-}
-
-#followers > span {
-
-  color: #4078c0;
-  font-size: 50px;
 }
 
 #loginName {
@@ -543,12 +532,7 @@ input {
   max-width: 100%
 }
 
-#realName {
-  
-  margin-top: 0;
-  font-weight: bold;
-  margin-bottom: 0px;
-}
+
 
 #reposList {
 
@@ -571,10 +555,27 @@ input {
   padding: 10px;
 }
 
+#followers > span {
+
+  color: #4078c0;
+  font-size: 50px;
+}
+
 #starred > span {
 
   color: #4078c0;
   font-size: 50px;
 }
 
+#followed > span {
 
+  color: #4078c0;
+  font-size: 50px;
+}
+
+#realName {
+  
+  margin-top: 0;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
