@@ -1,29 +1,11 @@
 
 window.onload = function() {
 
-	var user = $("input").val(),
 
- 	urlProfile = "https://api.github.com/users/" + user;
+ 	urlProfile = "https://api.github.com/users/"
 
 
 	// dataKey = access_token: apiKey;
-
-	
-	var gitProfile = {
-		url: urlProfile,
-		success: createProfile,
-		data: {
-				// "access_token" : apiKey
-			}
-		}
-
-	var gitRepos = {
-		url: urlProfile + "/repos",
-		success: createRepos,
-		data: {
-				// "access_token" : apiKey
-			}
-		}
 
 	var createProfile = function(profileData) {
 		
@@ -52,7 +34,8 @@ window.onload = function() {
 
 	var repoList = function(repoArr) {
 		// [repoObj1, repoObj2]
-		var listElement = $("#reposList")[0];
+		var listElement = $("#reposList")[0]
+			listElement.innerHTML = ""
 		repoArr.forEach(function(repObj){
 			listElement.innerHTML += "<div class = repos>" + "<a href=" + repObj.url + " class = repoName>" + repObj.name + "</a>" + "<p class = starGazers>" + "<i class='fa fa-star'></i> " + repObj.stargazers_count + "<p class = fork>" + "<i class='fa fa-code-fork'></i> " + repObj.forks_count + "</p>" + "<p class = language>" + repObj.language + "</p>" + "<br>" + "<p class = createdOn>" + repObj.created_at + "</p>"
 		})		
@@ -60,12 +43,54 @@ window.onload = function() {
 
 
 
-	var startAjax = function() {
+	var startAjax = function(query) {
+		var gitProfile = {
+			url: urlProfile + query.replace("#" , ""),
+			success: createProfile,
+			data: {
+				// "access_token" : apiKey
+			}
+		}
 		$.ajax(gitProfile).success(createProfile),
+		console.log("finding profile")
+
+		var gitRepos = {
+			url: urlProfile + query.replace("#","") + "/repos",
+			success: createRepos,
+			data: {
+				// "access_token" : apiKey
+			}
+		}
+
 		$.ajax(gitRepos).success(createRepos);
+		console.log("loading repos")
 	}
 
 
+	var	changeUser = function(){
+		var inputEl = $("input")[0]
+		inputEl.onkeypress = getInput
+		var query = location.hash
+
+	}
+
+	var getInput = function(event){
+		if (event.keyCode === 13){
+			var inputEl = event.srcElement,
+				query = inputEl.value
+			inputEl.value = ""
+            location.hash = query
+			console.log("ninjas")
+		}
+	}
+
+
+	window.onhashchange = function (){
+		var query = location.hash
+		startAjax(query)
+	}
+
+	changeUser()
 	// var ajaxRepsonse1 = $.ajax(gitProfile).success(createProfile),
 	// 	ajaxRepsonse2 = $.ajax(gitRepos).success(createRepos);
 
@@ -74,6 +99,5 @@ window.onload = function() {
 	// console.log("ajax called");
 	// window.ajaxRepsonse2 = ajaxRepsonse2;
 	// console.log("ajax called again")
-	startAjax()
 
 }
